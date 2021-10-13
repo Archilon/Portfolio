@@ -1,5 +1,5 @@
 import React,  { useState } from 'react'
-import styles from 'clickCount.module.scss'
+import styles from './clickCount.module.scss'
 
 type ClickCountProps = {
 
@@ -24,3 +24,4 @@ const [count, setCount] = useState(0);
 
 
 export default ClickCount
+
