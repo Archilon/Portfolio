@@ -10,7 +10,9 @@ import {
     Route,
     Link
   } from 'react-router-dom';
-import Main from './sites/main';
+import Main from './sites/feedback';
+import Mainsite from './sites/feedback';
+import Feedback from './sites/feedback';
 ///<ClickCount />
 const App: React.FC = () => {
     return (
@@ -20,14 +22,14 @@ const App: React.FC = () => {
         <div className={styles.navbar}>
           <Link to='/'>Front page</Link>
           <Link to='example'>Look my example component</Link>
-          <Link to='sites'>third site</Link>
+          <Link to='sites'>testing third link</Link>
         </div>
   
         <Switch>
           {/* Changing content comes here */}
           <Route exact path='/' component={MyFirstComponent} />
           <Route exact path='/example' component={SomeExampleComponent}/>
-          <Route exact path='/sites' component={Main}/>
+          <Route exact path='/sites' component={Feedback}/>
           
         </Switch>
   
