@@ -10,6 +10,7 @@ import {
     Route,
     Link
   } from 'react-router-dom';
+import Main from './sites/main';
 ///<ClickCount />
 const App: React.FC = () => {
     return (
@@ -19,12 +20,15 @@ const App: React.FC = () => {
         <div className={styles.navbar}>
           <Link to='/'>Front page</Link>
           <Link to='example'>Look my example component</Link>
+          <Link to='sites'>third site</Link>
         </div>
   
         <Switch>
           {/* Changing content comes here */}
           <Route exact path='/' component={MyFirstComponent} />
           <Route exact path='/example' component={SomeExampleComponent}/>
+          <Route exact path='/sites' component={Main}/>
+          
         </Switch>
   
         {/* The footer and other components you want to display on all pages come here */}
