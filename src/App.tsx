@@ -8,7 +8,8 @@ const App: React.FC = () => {
     return (
         <div>
             <MyFirstComponent />
-            
+        </div>
+        <div>
             <SomeExampleComponent />
         </div>
     )
