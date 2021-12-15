@@ -10,8 +10,6 @@ import {
     Route,
     Link
   } from 'react-router-dom';
-import Main from './sites/feedback';
-import Mainsite from './sites/feedback';
 import Feedback from './sites/feedback';
 ///<ClickCount />
 const App: React.FC = () => {
