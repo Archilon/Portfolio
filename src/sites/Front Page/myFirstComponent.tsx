@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './example/someExampleComponent.module.scss'
+import styles from './FirstComponent.module.scss'
 type MyFirstComponentProps = {
 
 }
