@@ -1,6 +1,6 @@
 // App.tsx
 import React from 'react'
-import Main from './sites/Front Page/Main';
+import Main from './sites/Front_Page/Main';
 import Projects from './sites/Projects/Projects';
 import AboutMe from './sites/About_me/AboutMe';
 import Feedback from './sites/Feedback/Feedback';
