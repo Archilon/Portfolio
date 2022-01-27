@@ -15,9 +15,8 @@ const percent = (good/(good+neutral+poor)*100||0)
            
           <div className={styles.container}>
             <h2>Feedback</h2>
-            
             <table>
-              <tbody>
+              <tbody className='buttons'>
               <tr>
                   <td>
                     <button onClick={() => setgood(good + 1)}>Good</button>

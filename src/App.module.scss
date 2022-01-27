@@ -1,9 +1,57 @@
 
 body {
     background-color: gray;
+    margin: 0px;
 }
 .navbar{
     display: flex;
     flex-direction: column;
     background-color: black;
+}
+.wrapper{
+    float: right;
+    width: 100%;
+}
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 220px;
+    margin-right: -220px;
+    float:right;
+    overflow: hidden;
+    background: rgb(66, 66, 66);
+    color: silver;
+    height: 100vh;
+    box-shadow:3px 0 5px 0 rgb(24, 24, 24);
+    text-align: center;
+    a{
+        margin: 10px 0;
+    }
+    a:link{
+        color: rgb(209, 209, 209);
+    }
+    a:visited{
+        color: rgb(122, 122, 122);
+    }
+    a:hover{
+        color: white;
+    }
+}
+.content{
+    margin-left: 220px;
+    padding-left: 35px;
+    clear: both;
+    overflow: auto;
+    background: rgb(141, 141, 141);
+    height: 100vh;
+}
+@media only screen and (max-width: 768px){
+    .sidebar{
+        display: none;
+    }
+    .content{
+        margin-left: 0;
+    }
 }

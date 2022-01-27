@@ -15,28 +15,27 @@ import {
 
 const App: React.FC = () => {
     return (
-        <Router basename='/reactportfolio'>
-      
-        {/* The navigation bar and other components you want to display on all pages come here */}
-        <div className={styles.navbar}>
-          <Link to='/sites/Front Page'>Front page</Link>
-        
-          <Link to='/sites/Projects'>Current projects</Link>
-
-          <Link to='/sites/About me'>About me</Link>
+      <Router basename='/reactportfolio'>
+        <div className={styles.wrapper}>
+          <div className={styles.content}>
+          <Switch>
+            <Route exact path='/sites/Front Page' component={MyFirstComponent} />
+            <Route exact path='/sites/Projects' component={Projects}/>
+            <Route exact path='/sites/About me' component={AboutMe}/>
+          </Switch>
+          </div>
         </div>
+        <div className={styles.sidebar}>
+          {/* <div className={styles.navbar}> */}
+            <Link to='/sites/Front Page'>Front page</Link>
+            <Link to='/sites/Projects'>Projects</Link>
+            <Link to='/sites/About me'>About me</Link>
+          {/* </div> */}
+        </div>
+        <div className='Footer'><ClickCount /></div>
+      </Router>
 
-        <Switch>
-          {/* Changing content comes here */}
-          <Route exact path='/sites/Front Page' component={MyFirstComponent} />
-          <Route exact path='/sites/Projects' component={Projects}/>
-          <Route exact path='/sites/About me' component={AboutMe}/>
-        </Switch>
-  
-        {/* The footer and other components you want to display on all pages come here */}
-        <ClickCount />
-  
-      </Router>          
+      
             )
 }
 
