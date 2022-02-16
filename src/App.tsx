@@ -20,17 +20,18 @@ const App: React.FC = () => {
           <div className={styles.content}>
           <Switch>
             <Route exact path='/' component={Main} />
-            <Route exact path='/sites/Projects' component={Projects}/>
-            <Route exact path='/sites/About_me' component={AboutMe}/>
+            <Route exact path='/Projects' component={Projects}/>
+            <Route exact path='/About_me' component={AboutMe}/>
           </Switch>
           </div>
         </div>
         <div className={styles.sidebar}>
             <Link to='/'><button>Front page</button></Link>
-            <Link to='/sites/Projects'><button>Projects</button></Link>
-            <Link to='/sites/About_me'><button>About me</button></Link>
+            <Link to='/Projects'><button>Projects</button></Link>
+            <Link to='/About_me'><button>About me</button></Link>
+            <div className={styles.Feedback}><Feedback /></div>
         </div>
-        <div className='Footer'><Feedback /></div>
+        
       </Router>
 
       

@@ -18,10 +18,12 @@ const AboutMe: React.FC<MainProps> = () => {
       <h2>Work history:</h2>
       <p>before i started studying programming i've worked in multiple different fields</p>
       <p>including:</p>
-      <li>Welding</li>
-      <li>construction sites as a ventilation fitter</li>
-      <li>cnc-operator</li>
-      <li>assembler in the metal industry</li>
+      <ul>
+        <li>Welding</li>
+        <li>construction sites as a ventilation fitter</li>
+        <li>cnc-operator</li>
+        <li>assembler in the metal industry</li>
+      </ul>
     </div>
   )
 }

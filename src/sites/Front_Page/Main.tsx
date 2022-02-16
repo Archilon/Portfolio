@@ -8,9 +8,8 @@ const Main: React.FC<MainProps> = () => {
 
     return (
         <div className={styles.container}>
-            <h1>Welcome to my porfolio</h1>
+            <h1>Welcome to my portfolio</h1>
             <p>this is under development😎</p>
-            <p></p>
         </div>
     )
 }
