@@ -11,7 +11,6 @@ import {
     Route,
     Link,
   } from 'react-router-dom';
-import Statistics from './sites/Feedback/statistics';
 import FirebaseServices from './firebase/firebaseServices';
 import { logEvent } from 'firebase/analytics';
 
@@ -42,7 +41,6 @@ const App: React.FC = () => {
             <Link to='/About_me'><button>About me</button></Link>
             <div className={styles.Feedback}><Feedback /></div>
         </div>
-        <Statistics />
         
       </Router>
 

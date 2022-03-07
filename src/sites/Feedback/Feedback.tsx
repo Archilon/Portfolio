@@ -61,33 +61,6 @@ const Feedback: React.FC<FeedbackProps> = () => {
 
     return data;
   }
-  const statistics = () => {
-    if(feedbackGiven){
-    return(
-      <div className={styles.statistics}>
-        <td>
-          <p>Good: </p>
-          <p>Neutral: </p>
-          <p>Poor: </p>
-          <p>Positive feedback:</p>
-        </td>
-        
-        <td>
-          <p>{myFeedback!.good}</p>
-          <p>{myFeedback!.neutral}</p>
-          <p>{myFeedback!.poor}</p>
-          <p>{percent}%</p>
-        </td>
-      </div>
-                
-    )  
-    }
-  }
-
-  const percent = myFeedback
-    ? (myFeedback.good/(myFeedback.good+myFeedback.neutral+myFeedback.poor)*100||0)
-    : 0;
-
   return (
     !myFeedback
     ? null
