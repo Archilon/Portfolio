@@ -1,19 +1,30 @@
 // App.tsx
-import React from 'react'
+import React, { useEffect } from 'react'
 import Main from './sites/Front_Page/Main';
 import Projects from './sites/Projects/Projects';
 import AboutMe from './sites/About_me/AboutMe';
 import Feedback from './sites/Feedback/Feedback';
 import styles from './App.module.scss'
 import {
-    HashRouter as Router,
+    BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
   } from 'react-router-dom';
+import Statistics from './sites/Feedback/statistics';
+import FirebaseServices from './firebase/firebaseServices';
+import { logEvent } from 'firebase/analytics';
 
 
 const App: React.FC = () => {
+  useEffect( () => {
+    console.log('analyticsUseEffect')
+    const analyticsInstance = FirebaseServices.getAnalyticsInstance();
+    logEvent(analyticsInstance, 'page_view', {
+      page_path: '/'
+    })
+  })
+
     return (
       <Router basename='/reactportfolio'>
         <div className={styles.wrapper}>
@@ -31,6 +42,7 @@ const App: React.FC = () => {
             <Link to='/About_me'><button>About me</button></Link>
             <div className={styles.Feedback}><Feedback /></div>
         </div>
+        <Statistics />
         
       </Router>
 

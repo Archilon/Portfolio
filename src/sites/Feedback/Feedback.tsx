@@ -4,19 +4,12 @@ import Popup from 'reactjs-popup';
 import { doc, updateDoc, getDoc, } from 'firebase/firestore';
 import 'reactjs-popup/dist/index.css';
 import FirebaseServices from '../../firebase/firebaseServices';
+import { IFeedback } from '../../types/feedback';
+import Statistics from './statistics';
 
 type FeedbackProps = {}
 
 const FEEDBACK_KEY = 'feedkey';
-
-interface IFeedback {
-  good: number,
-  neutral: number,
-  poor: number,
-}
-var good:number|undefined = 0;
-let neutral:number|undefined = 0;
-let poor:number|undefined = 0;
 
 const Feedback: React.FC<FeedbackProps> = () => {
   const [myFeedback, setMyFeedback] = useState<IFeedback|undefined>(undefined);
@@ -68,13 +61,29 @@ const Feedback: React.FC<FeedbackProps> = () => {
 
     return data;
   }
-  const updateStatistics = () => {
+  const statistics = () => {
+    if(feedbackGiven){
     return(
-    good = myFeedback!.good,
-    neutral = myFeedback!.neutral,
-    poor = myFeedback!.poor
-  )
-}
+      <div className={styles.statistics}>
+        <td>
+          <p>Good: </p>
+          <p>Neutral: </p>
+          <p>Poor: </p>
+          <p>Positive feedback:</p>
+        </td>
+        
+        <td>
+          <p>{myFeedback!.good}</p>
+          <p>{myFeedback!.neutral}</p>
+          <p>{myFeedback!.poor}</p>
+          <p>{percent}%</p>
+        </td>
+      </div>
+                
+    )  
+    }
+  }
+
   const percent = myFeedback
     ? (myFeedback.good/(myFeedback.good+myFeedback.neutral+myFeedback.poor)*100||0)
     : 0;
@@ -82,29 +91,14 @@ const Feedback: React.FC<FeedbackProps> = () => {
   return (
     !myFeedback
     ? null
-    : <Popup trigger={<button> Feedback</button>} position="right top">
+    : <Popup trigger={<button>Feedback</button>} position="right top">
       <div className={styles.container}>
         <h2>Feedback</h2>
         <table>
           <tbody>
             {
               feedbackGiven
-              ? (updateStatistics(),
-                  <div className={styles.statistics}>
-                    <td>
-                      <p>Good: </p>
-                      <p>Neutral: </p>
-                      <p>Poor: </p>
-                      <p>Positive feedback:</p>
-                    </td>
-                    <td>
-                      <p>{good}</p>
-                      <p>{neutral}</p>
-                      <p>{poor}</p>
-                      <p>{percent}%</p>
-                    </td>
-                  </div>
-                )
+              ? <Statistics />
               : (
                 <tr>
                     <div className={styles.buttons}>
@@ -120,7 +114,7 @@ const Feedback: React.FC<FeedbackProps> = () => {
                           });
                           setFeedbackGiven(true);
                           sendFeedback();
-                          updateStatistics();
+                          getFeedback();
                           localStorage.setItem(FEEDBACK_KEY, 'true');
                         }}>Good
                       </button>
@@ -136,7 +130,7 @@ const Feedback: React.FC<FeedbackProps> = () => {
                           });
                           setFeedbackGiven(true);
                           sendFeedback();
-                          updateStatistics();
+                          getFeedback();
                           localStorage.setItem(FEEDBACK_KEY, 'true');
                         }}>Neutral
                       </button>
@@ -151,7 +145,7 @@ const Feedback: React.FC<FeedbackProps> = () => {
                           });
                           setFeedbackGiven(true);
                           sendFeedback();
-                          updateStatistics();
+                          getFeedback();
                           localStorage.setItem(FEEDBACK_KEY, 'true');
                         }}>Poor
                       </button>
