@@ -6,26 +6,39 @@ import AboutMe from './sites/About_me/AboutMe';
 import Feedback from './sites/Feedback/Feedback';
 import styles from './App.module.scss'
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
+    useHistory,
   } from 'react-router-dom';
 import FirebaseServices from './firebase/firebaseServices';
 import { logEvent } from 'firebase/analytics';
 
 
 const App: React.FC = () => {
-  useEffect( () => {
-    console.log('analyticsUseEffect')
-    const analyticsInstance = FirebaseServices.getAnalyticsInstance();
-    logEvent(analyticsInstance, 'page_view', {
-      page_path: '/'
+
+  const history = useHistory();
+
+  useEffect(() => {
+    const pingAnalytics = () => {
+      console.log('pingAnalytics:', window.location.pathname);
+      const analyticsInstance = FirebaseServices.getAnalyticsInstance();
+      logEvent(analyticsInstance, 'page_view', {
+        page_path: window.location.pathname,
+      });
+    };
+
+    pingAnalytics();
+    console.log('USEEFFECT => LOCATION');
+
+    return history.listen(location => {
+      console.log('location', location);
+      pingAnalytics();
     })
-  })
+  }, [history]);
 
     return (
-      <Router basename='/reactportfolio'>
+      <>
         <div className={styles.wrapper}>
           <div className={styles.content}>
           <Switch>
@@ -41,8 +54,7 @@ const App: React.FC = () => {
             <Link to='/About_me'><button>About me</button></Link>
             <div className={styles.Feedback}><Feedback /></div>
         </div>
-        
-      </Router>
+        </>
 
       
             )
