@@ -12,8 +12,6 @@ const Statistics: React.FC<StatisticsProps> = () => {
 	const [feedbackData, setFeedbackData] = useState<IFeedback>();
 
 	useEffect(() => {
-		console.log('useEffect firing');
-
 		const firebaseInstance = FirebaseServices.getFirestoreInstance();
 		const unsub = () => onSnapshot(doc(firebaseInstance, 'feedback', 'feedbacks'), snap => {
 				const data = snap.data() as IFeedback;
@@ -30,6 +28,7 @@ const Statistics: React.FC<StatisticsProps> = () => {
       <p>Good: {feedbackData?.good ?? 0}</p>
 			<p>Neutral: {feedbackData?.neutral ?? 0}</p>
 			<p>Poor: {feedbackData?.poor ?? 0}</p>
+			<br />
 			<p>positive Feedback: {percent}%</p>
     </div>
   )

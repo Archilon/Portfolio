@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import Main from './sites/Front_Page/Main';
 import Projects from './sites/Projects/Projects';
 import AboutMe from './sites/About_me/AboutMe';
@@ -18,10 +18,8 @@ import { logEvent } from 'firebase/analytics';
 const App: React.FC = () => {
 
   const history = useHistory();
-
   useEffect(() => {
     const pingAnalytics = () => {
-      console.log('pingAnalytics:', window.location.pathname);
       const analyticsInstance = FirebaseServices.getAnalyticsInstance();
       logEvent(analyticsInstance, 'page_view', {
         page_path: window.location.pathname,
@@ -29,16 +27,19 @@ const App: React.FC = () => {
     };
 
     pingAnalytics();
-    console.log('USEEFFECT => LOCATION');
-
     return history.listen(location => {
-      console.log('location', location);
       pingAnalytics();
     })
   }, [history]);
 
     return (
-      <>
+      <div>
+        <div className={styles.sidebarButtons}>
+            <Link to='/'><button>Front page</button></Link>
+            <Link to='/Projects'><button>Projects</button></Link>
+            <Link to='/About_me'><button>About me</button></Link>
+            <div className={styles.FeedbackButtons}><Feedback postition='bottom right' /></div>
+        </div>
         <div className={styles.wrapper}>
           <div className={styles.content}>
           <Switch>
@@ -52,9 +53,10 @@ const App: React.FC = () => {
             <Link to='/'><button>Front page</button></Link>
             <Link to='/Projects'><button>Projects</button></Link>
             <Link to='/About_me'><button>About me</button></Link>
-            <div className={styles.Feedback}><Feedback /></div>
+            <div className={styles.Feedback}><Feedback postition='right bottom' /></div>
         </div>
-        </>
+
+        </div>
 
       
             )

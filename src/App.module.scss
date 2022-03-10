@@ -14,11 +14,11 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 220px;
-    margin-right: -220px;
+    width: 150px;
+    margin-right: -150px;
     float:right;
     overflow: hidden;
-    background: rgb(66, 66, 66);
+    background: rgb(0, 0, 0);
     color: silver;
     height: 100vh;
     box-shadow:3px 0 5px 0 rgb(24, 24, 24);
@@ -37,7 +37,7 @@ body {
         color: white;
     }
     button{
-        width: 200px;
+        width: 100px;
         transition-duration: 0.7s;
         color: silver;
     }
@@ -52,12 +52,28 @@ body {
     margin-top: auto;
 }
 .content{
-    margin-left: 220px;
+    margin-left: 150px;
     padding-left: 35px;
     clear: both;
     overflow: auto;
     background: rgb(141, 141, 141);
     height: 100vh;
+}
+.sidebarButtons{
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+}
+.FeedbackButtons{
+    align-items: right;
+}
+@media only screen and (min-width: 768px){
+    .sidebarButtons{
+        display: none;
+    }
+    .FeedbackButtons{
+        display: none;
+    }
 }
 @media only screen and (max-width: 768px){
     .sidebar{
